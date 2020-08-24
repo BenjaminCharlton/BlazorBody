@@ -1,0 +1,23 @@
+﻿@inject IJSRuntime JSRuntime
+@code {
+    protected async override Task OnParametersSetAsync()
+    {
+        if (CssClass is { })
+            await JSRuntime.InvokeVoidAsync("addCssClassToBody", CssClass);
+
+        if (Language is { })
+            await JSRuntime.InvokeVoidAsync("setLanguageOfBody", Language);
+
+        if (TextDirection is { })
+            await JSRuntime.InvokeVoidAsync("setTextDirectionOfBody", TextDirection);
+    }
+
+    [Parameter]
+    public string? CssClass { get; set; } = null;
+
+    [Parameter]
+    public string? Language { get; set; } = null;
+
+    [Parameter]
+    public string? TextDirection { get; set; } = null;
+}

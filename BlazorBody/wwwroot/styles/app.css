@@ -1,0 +1,9 @@
+﻿body {
+    background: white;
+    color: black;
+}
+
+body.danger {
+    background: red;
+    color: white;
+}
